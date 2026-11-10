@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chess Kickoff</title>
+    <script type="module" crossorigin src="./assets/soccer-DF43F__I.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/theme-DQ2Mpp4d.js">
+    <link rel="modulepreload" crossorigin href="./assets/prompt-BEpEtU9b.js">
+    <link rel="modulepreload" crossorigin href="./assets/sounds-DctLc8dp.js">
+    <link rel="modulepreload" crossorigin href="./assets/kickoffField-1ecKk5TD.js">
+    <link rel="stylesheet" crossorigin href="./assets/theme-BSuA8G8H.css">
+  </head>
+  <body>
+    <main class="app soccer-page">
+      <header class="page-header">
+        <a class="button-link" href="./">← Play chess</a>
+        <h1>Chess Kickoff</h1>
+      </header>
+      <p class="variant-rules">
+        Two players, one device. Take turns flicking one of your pieces at the ball. White shoots right, Black
+        shoots left. First to 3 goals wins.
+      </p>
+      <div class="archery-hud soccer-hud">
+        <span>White <strong id="soccer-score-w">0</strong></span>
+        <span id="soccer-status" class="soccer-status" aria-live="polite"></span>
+        <span>Black <strong id="soccer-score-b">0</strong></span>
+        <button id="soccer-new-match" type="button">New match</button>
+      </div>
+      <div id="soccer-field" class="soccer-field">
+        <canvas id="soccer-canvas" aria-label="Soccer field: drag back from one of your pieces and let go to flick it"></canvas>
+      </div>
+      <p class="hint">
+        Press on one of your pieces, pull back away from where you want it to go, and let go. The farther you
+        pull, the harder the flick. The queen hits hardest; the king is the weakest.<br />
+        A kickoff can't score: the goals stay shut until the first shot after a kickoff. Your turn ends when
+        everything stops moving.
+      </p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" class="analysis-root">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis Board</title>
+    <script type="module" crossorigin src="./assets/analysis-CdVVWhm0.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/theme-DQ2Mpp4d.js">
+    <link rel="modulepreload" crossorigin href="./assets/game-CaDkfNOc.js">
+    <link rel="modulepreload" crossorigin href="./assets/board-D9v6p5gX.js">
+    <link rel="modulepreload" crossorigin href="./assets/moveList-DzFQlob5.js">
+    <link rel="modulepreload" crossorigin href="./assets/enginePanel-DPxON38M.js">
+    <link rel="stylesheet" crossorigin href="./assets/theme-BSuA8G8H.css">
+  </head>
+  <body>
+    <main class="app analysis-page">
+      <header class="page-header">
+        <a class="button-link" href="./">← Play a game</a>
+        <h1>Analysis Board</h1>
+        <a class="button-link" href="study.html">Studies</a>
+      </header>
+      <p id="status" class="status" aria-live="polite"></p>
+      <div class="analysis-layout">
+        <div class="board-column">
+          <div id="eval-bar" class="eval-bar" role="img" aria-label="Evaluation bar">
+            <div class="eval-bar-white"></div>
+            <span class="eval-bar-label"></span>
+          </div>
+          <div id="board-container" class="board-container"></div>
+        </div>
+
+        <aside class="side-panel">
+          <section class="panel engine-panel" aria-label="Engine">
+            <div class="engine-header">
+              <label class="toggle">
+                <input id="engine-toggle" type="checkbox" checked />
+                <span>Stockfish</span>
+              </label>
+              <span id="engine-score" class="engine-score"></span>
+              <span id="engine-status" class="engine-status" aria-live="polite"></span>
+              <span class="line-count" role="group" aria-label="Number of engine lines">
+                <button id="engine-fewer-lines" type="button" title="Show fewer lines" aria-label="Show fewer lines">−</button>
+                <span id="engine-line-count" aria-live="polite"></span>
+                <button id="engine-more-lines" type="button" title="Show more lines" aria-label="Show more lines">+</button>
+              </span>
+            </div>
+            <ol id="engine-lines" class="engine-lines"></ol>
+          </section>
+
+          <section class="panel moves-panel" aria-label="Moves">
+            <ol id="move-list" class="move-list"></ol>
+            <p id="move-list-empty" class="empty-message">No moves yet. Move a piece for either side.</p>
+            <div class="nav-buttons">
+              <button id="nav-start" type="button" title="First position (Home)" aria-label="First position">⏮</button>
+              <button id="nav-back" type="button" title="Back one move (←)" aria-label="Back one move">◀</button>
+              <button id="nav-forward" type="button" title="Forward one move (→)" aria-label="Forward one move">▶</button>
+              <button id="nav-end" type="button" title="Last position (End)" aria-label="Last position">⏭</button>
+              <button id="flip" type="button" title="Flip board (F)">Flip</button>
+            </div>
+          </section>
+
+          <section class="panel tools-panel" aria-label="Position">
+            <label class="fen-row">
+              FEN
+              <input id="fen-output" type="text" readonly spellcheck="false" />
+            </label>
+            <div class="tool-buttons">
+              <button id="copy-fen" type="button">Copy FEN</button>
+              <button id="copy-pgn" type="button">Copy PGN</button>
+              <button id="reset" type="button">Start position</button>
+            </div>
+            <label class="load-label" for="load-input">Load a position (FEN) or game (PGN)</label>
+            <textarea id="load-input" rows="3" spellcheck="false" placeholder="Paste a FEN or PGN here"></textarea>
+            <div class="tool-buttons">
+              <button id="load" type="button">Load</button>
+            </div>
+            <p id="tools-message" class="panel-message" aria-live="polite"></p>
+          </section>
+        </aside>
+      </div>
+      <p class="hint">
+        Move pieces for both sides. Use ← and → to step through moves, or click a move in the list.<br />
+        Click a move in an engine line to play the line up to that move. Right-click or right-drag to mark squares and draw arrows.
+      </p>
+    </main>
+  </body>
+</html>

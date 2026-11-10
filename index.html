@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pass-and-Play Chess</title>
+    <script type="module" crossorigin src="./assets/main-BADScEhb.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/theme-DQ2Mpp4d.js">
+    <link rel="modulepreload" crossorigin href="./assets/game-CaDkfNOc.js">
+    <link rel="modulepreload" crossorigin href="./assets/savedGames-CXj-LawO.js">
+    <link rel="modulepreload" crossorigin href="./assets/board-D9v6p5gX.js">
+    <link rel="modulepreload" crossorigin href="./assets/moveList-DzFQlob5.js">
+    <link rel="modulepreload" crossorigin href="./assets/clock-DeI-TrBw.js">
+    <link rel="modulepreload" crossorigin href="./assets/prompt-BEpEtU9b.js">
+    <link rel="modulepreload" crossorigin href="./assets/sounds-DctLc8dp.js">
+    <link rel="stylesheet" crossorigin href="./assets/theme-BSuA8G8H.css">
+  </head>
+  <body>
+    <main class="app">
+      <h1>Pass-and-Play Chess</h1>
+      <p id="variant-rules" class="variant-rules" hidden></p>
+      <div class="controls">
+        <label>
+          Variant
+          <select id="variant"></select>
+        </label>
+        <label>
+          Time control
+          <select id="time-control"></select>
+        </label>
+        <button id="new-game" type="button">New game</button>
+        <a id="analysis-link" class="button-link" href="analysis.html" target="_blank" rel="noopener"
+          title="Opens in a new tab, so this game keeps going">Analysis board</a>
+        <a class="button-link" href="study.html" target="_blank" rel="noopener"
+          title="Opens in a new tab, so this game keeps going">Studies</a>
+        <a class="button-link" href="archery.html" title="A mini-game: shoot the pawns storming your back rank">Archery</a>
+        <a class="button-link" href="soccer.html" title="A two-player mini-game: flick chess pieces to score goals">Kickoff</a>
+        <a class="button-link" href="chess-kickoff.html" title="Each turn: a chess move, then a flick at the ball, on one clock">Chess + Kickoff</a>
+        <button id="sound-toggle" type="button" aria-pressed="true" title="Turn move sounds on or off">Sound on</button>
+        <a id="account-link" class="button-link" href="account.html">Sign in</a>
+        <label>
+          Background
+          <select id="background-mode">
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="custom">Custom color</option>
+            <option value="image">Image</option>
+          </select>
+        </label>
+      </div>
+      <div id="custom-time-options" class="options-panel" hidden>
+        <div class="custom-time-fields">
+          <label>
+            Minutes each
+            <input id="custom-minutes" type="number" min="0.5" max="180" step="0.5" value="7" inputmode="decimal" />
+          </label>
+          <label>
+            Increment (seconds)
+            <input id="custom-increment" type="number" min="0" max="60" step="1" value="3" inputmode="numeric" />
+          </label>
+        </div>
+        <p id="custom-time-message" class="panel-message error" aria-live="polite"></p>
+      </div>
+      <div id="custom-color-options" class="options-panel" hidden>
+        <label class="slider-row">
+          <span>Red</span>
+          <input id="custom-r" type="range" min="0" max="255" />
+          <output for="custom-r"></output>
+        </label>
+        <label class="slider-row">
+          <span>Green</span>
+          <input id="custom-g" type="range" min="0" max="255" />
+          <output for="custom-g"></output>
+        </label>
+        <label class="slider-row">
+          <span>Blue</span>
+          <input id="custom-b" type="range" min="0" max="255" />
+          <output for="custom-b"></output>
+        </label>
+      </div>
+      <div id="image-options" class="options-panel" hidden>
+        <label class="file-button">
+          Choose image…
+          <input id="background-image" type="file" accept="image/*" />
+        </label>
+        <p id="image-message" class="panel-message" aria-live="polite"></p>
+      </div>
+      <p id="status" class="status" aria-live="polite"></p>
+      <p id="variant-status" class="variant-status" hidden></p>
+      <div class="game-layout">
+        <div class="play-area">
+          <div id="clock-b" class="clock" aria-label="Black's clock">
+            <span class="clock-name">Black</span>
+            <div class="player-actions" role="group" aria-label="Black's options">
+              <button type="button" data-action="takeback" data-color="b" title="Black: ask to take back your last move">
+                ↶<span class="action-text"> Takeback</span>
+              </button>
+              <button type="button" data-action="draw" data-color="b" title="Black: offer a draw">
+                ½<span class="action-text"> Draw</span>
+              </button>
+              <button type="button" data-action="resign" data-color="b" title="Black: resign">
+                ⚑<span class="action-text"> Resign</span>
+              </button>
+            </div>
+            <button type="button" class="add-time" data-action="add-time" data-color="b" title="Give Black 15 more seconds">
+              +15s
+            </button>
+            <span class="clock-time"></span>
+          </div>
+          <div id="pocket-b" class="pocket" role="group" aria-label="Black's hand" hidden></div>
+          <div id="board-container" class="board-container"></div>
+          <div id="pocket-w" class="pocket" role="group" aria-label="White's hand" hidden></div>
+          <div id="clock-w" class="clock" aria-label="White's clock">
+            <span class="clock-name">White</span>
+            <div class="player-actions" role="group" aria-label="White's options">
+              <button type="button" data-action="takeback" data-color="w" title="White: ask to take back your last move">
+                ↶<span class="action-text"> Takeback</span>
+              </button>
+              <button type="button" data-action="draw" data-color="w" title="White: offer a draw">
+                ½<span class="action-text"> Draw</span>
+              </button>
+              <button type="button" data-action="resign" data-color="w" title="White: resign">
+                ⚑<span class="action-text"> Resign</span>
+              </button>
+            </div>
+            <button type="button" class="add-time" data-action="add-time" data-color="w" title="Give White 15 more seconds">
+              +15s
+            </button>
+            <span class="clock-time"></span>
+          </div>
+        </div>
+        <aside class="panel game-moves" aria-label="Moves">
+          <h2>Moves</h2>
+          <ol id="move-list" class="move-list"></ol>
+          <p id="move-list-empty" class="empty-message">No moves yet.</p>
+        </aside>
+      </div>
+      <p class="hint">
+        Click a piece then a highlighted square, or drag it.<br />
+        Right-click a square to highlight it, or right-drag to draw an arrow.<br />
+        Each clock has buttons to ask for a takeback, offer a draw, resign, or give that player 15 seconds.
+      </p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <script type="module" crossorigin src="./assets/account-lei5Aruz.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/theme-DQ2Mpp4d.js">
+    <link rel="modulepreload" crossorigin href="./assets/game-CaDkfNOc.js">
+    <link rel="modulepreload" crossorigin href="./assets/savedGames-CXj-LawO.js">
+    <link rel="stylesheet" crossorigin href="./assets/theme-BSuA8G8H.css">
+  </head>
+  <body>
+    <main class="app account-page">
+      <header class="page-header">
+        <a class="button-link" href="./">← Play a game</a>
+        <h1>♞ Your Chess Account</h1>
+      </header>
+      <p class="account-intro">
+        Sign in to keep your games and progress under your own name. New here? Create an account in a few seconds.
+      </p>
+
+      <section id="signed-in-panel" class="panel account-panel" hidden>
+        <p class="account-welcome">Signed in as <strong id="signed-in-name"></strong></p>
+        <a class="button-link primary-link" href="./">Play a game</a>
+        <button id="sign-out" type="button">Sign out</button>
+      </section>
+
+      <section id="games-panel" class="panel account-panel" aria-labelledby="games-heading" hidden>
+        <h2 id="games-heading" class="panel-heading">My games</h2>
+        <ol id="games-list" class="games-list"></ol>
+        <p id="games-empty" class="empty-message">
+          No games yet. Finish a game while signed in (checkmate, draw, resign or time) and it shows up here.
+        </p>
+      </section>
+
+      <section id="forms-panel" class="panel account-panel">
+        <div class="account-tabs" role="tablist" aria-label="Sign in or create an account">
+          <button id="sign-in-tab" type="button" role="tab" aria-controls="sign-in-form">Sign in</button>
+          <button id="register-tab" type="button" role="tab" aria-controls="register-form">Create account</button>
+        </div>
+
+        <form id="sign-in-form" class="account-form" novalidate>
+          <label for="sign-in-username">Username</label>
+          <input id="sign-in-username" type="text" autocomplete="username" maxlength="20" />
+          <label for="sign-in-password">Password</label>
+          <input id="sign-in-password" type="password" autocomplete="current-password" />
+          <p id="sign-in-message" class="panel-message error" aria-live="polite"></p>
+          <button type="submit" class="primary">Sign in</button>
+          <p class="form-switch">No account yet? <button type="button" class="link-button" data-show="register">Create one</button></p>
+        </form>
+
+        <form id="register-form" class="account-form" novalidate hidden>
+          <label for="register-username">Username</label>
+          <input id="register-username" type="text" autocomplete="username" maxlength="20" aria-describedby="username-rules" />
+          <small id="username-rules" class="field-hint">3–20 characters: letters, numbers, - and _</small>
+          <label for="register-password">Password</label>
+          <input id="register-password" type="password" autocomplete="new-password" aria-describedby="password-rules" />
+          <small id="password-rules" class="field-hint">At least 6 characters</small>
+          <label for="register-confirm">Type the password again</label>
+          <input id="register-confirm" type="password" autocomplete="new-password" />
+          <p id="register-message" class="panel-message error" aria-live="polite"></p>
+          <button type="submit" class="primary">Create account</button>
+          <p class="form-switch">Already have one? <button type="button" class="link-button" data-show="sign-in">Sign in</button></p>
+        </form>
+      </section>
+
+      <details class="panel account-help">
+        <summary>Having trouble signing in?</summary>
+        <ul>
+          <li>
+            <strong>Accounts live on this device.</strong> An account made on another phone, computer, or browser
+            won't show up here. Create a new one on this device.
+          </li>
+          <li>Passwords are case-sensitive. Check that Caps Lock is off.</li>
+          <li>Usernames are not case-sensitive, so “Arush” and “arush” are the same account.</li>
+          <li>
+            <strong>Forgot your password?</strong> It can't be recovered, because it is never stored as plain text.
+            You can remove the account from this device and create it again with a new password.
+            <form id="remove-form" class="remove-form" novalidate>
+              <label for="remove-username">Username to remove</label>
+              <input id="remove-username" type="text" maxlength="20" autocomplete="off" />
+              <button type="submit">Remove account</button>
+              <p id="remove-message" class="panel-message" aria-live="polite"></p>
+            </form>
+          </li>
+        </ul>
+      </details>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pawn Storm Archery</title>
+    <script type="module" crossorigin src="./assets/archery-Wmh4c7GE.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/theme-DQ2Mpp4d.js">
+    <link rel="modulepreload" crossorigin href="./assets/prompt-BEpEtU9b.js">
+    <link rel="stylesheet" crossorigin href="./assets/theme-BSuA8G8H.css">
+  </head>
+  <body>
+    <main class="app archery-page">
+      <header class="page-header">
+        <a class="button-link" href="./">← Play chess</a>
+        <h1>Pawn Storm Archery</h1>
+      </header>
+      <p class="variant-rules">
+        Black's pieces are storming your back rank. Hold to draw your rook's bow and let go to shoot. A full draw
+        (the ring turns gold) flies through every piece in its path. Don't let anything reach rank 1!
+      </p>
+      <div class="archery-hud" aria-live="polite">
+        <span>Score <strong id="archery-score">0</strong></span>
+        <span>Best <strong id="archery-best">0</strong></span>
+        <span>Lives <strong id="archery-lives" class="archery-lives"></strong></span>
+        <button id="archery-pause" type="button">Pause</button>
+      </div>
+      <div id="archery-board" class="board-container archery-board">
+        <canvas id="archery-canvas" aria-label="Archery board: aim with the pointer, hold to draw, release to shoot"></canvas>
+      </div>
+      <p class="hint">
+        Mouse or finger: aim, hold, release. Keyboard: aim with the mouse, hold Space to draw. P pauses.<br />
+        After each shot the bow reloads (the white bar under the rook); a draw only starts charging once it's ready.<br />
+        Pawns step straight down; knights (from 12 points) jump in L-shapes. Pawns are worth 1, knights 3, and
+        each extra piece one arrow pierces is worth more.
+      </p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" class="analysis-root study-root">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study</title>
+    <script type="module" crossorigin src="./assets/study-D4X_ZtRU.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/theme-DQ2Mpp4d.js">
+    <link rel="modulepreload" crossorigin href="./assets/game-CaDkfNOc.js">
+    <link rel="modulepreload" crossorigin href="./assets/board-D9v6p5gX.js">
+    <link rel="modulepreload" crossorigin href="./assets/moveList-DzFQlob5.js">
+    <link rel="modulepreload" crossorigin href="./assets/enginePanel-DPxON38M.js">
+    <link rel="stylesheet" crossorigin href="./assets/theme-BSuA8G8H.css">
+  </head>
+  <body>
+    <main class="app analysis-page">
+      <header class="page-header">
+        <a class="button-link" href="./">← Play a game</a>
+        <h1>Study</h1>
+        <a class="button-link" href="analysis.html">Analysis board</a>
+      </header>
+      <p id="status" class="status" aria-live="polite"></p>
+      <div class="study-layout">
+        <aside class="panel chapters-panel" aria-label="Studies and chapters">
+          <label class="study-picker">
+            Study
+            <select id="study-select"></select>
+          </label>
+          <div class="tool-buttons">
+            <button id="new-study" type="button">New study</button>
+            <button id="rename-study" type="button">Rename</button>
+            <button id="delete-study" type="button">Delete</button>
+          </div>
+
+          <h2 class="panel-heading">Chapters</h2>
+          <ol id="chapter-list" class="chapter-list"></ol>
+          <div class="tool-buttons">
+            <button id="add-chapter" type="button">Add chapter</button>
+            <button id="rename-chapter" type="button">Rename</button>
+            <button id="delete-chapter" type="button">Delete</button>
+          </div>
+
+          <form id="name-form" class="name-form" hidden>
+            <label id="name-label" for="name-input">Name</label>
+            <input id="name-input" type="text" maxlength="60" autocomplete="off" />
+            <div id="chapter-start-fields" class="chapter-start-fields">
+              <label for="chapter-start-input">Start from a FEN or PGN (optional)</label>
+              <textarea
+                id="chapter-start-input"
+                rows="3"
+                spellcheck="false"
+                placeholder="Leave empty for the usual starting position"
+              ></textarea>
+            </div>
+            <div class="tool-buttons">
+              <button id="name-save" type="submit" class="primary">Save</button>
+              <button id="name-cancel" type="button">Cancel</button>
+            </div>
+          </form>
+          <p id="study-message" class="panel-message" aria-live="polite"></p>
+        </aside>
+
+        <div class="board-column study-board">
+          <div id="eval-bar" class="eval-bar" role="img" aria-label="Evaluation bar">
+            <div class="eval-bar-white"></div>
+            <span class="eval-bar-label"></span>
+          </div>
+          <div id="board-container" class="board-container"></div>
+        </div>
+
+        <div class="side-panel study-side">
+          <section class="panel engine-panel" aria-label="Engine">
+            <div class="engine-header">
+              <label class="toggle">
+                <input id="engine-toggle" type="checkbox" checked />
+                <span>Stockfish</span>
+              </label>
+              <span id="engine-score" class="engine-score"></span>
+              <span id="engine-status" class="engine-status" aria-live="polite"></span>
+              <span class="line-count" role="group" aria-label="Number of engine lines">
+                <button id="engine-fewer-lines" type="button" title="Show fewer lines" aria-label="Show fewer lines">−</button>
+                <span id="engine-line-count" aria-live="polite"></span>
+                <button id="engine-more-lines" type="button" title="Show more lines" aria-label="Show more lines">+</button>
+              </span>
+            </div>
+            <ol id="engine-lines" class="engine-lines"></ol>
+          </section>
+
+          <section class="panel moves-panel" aria-label="Moves">
+            <ol id="move-list" class="move-list"></ol>
+            <p id="move-list-empty" class="empty-message">No moves yet. Move a piece for either side.</p>
+            <div class="nav-buttons">
+              <button id="nav-start" type="button" title="First position (Home)" aria-label="First position">⏮</button>
+              <button id="nav-back" type="button" title="Back one move (←)" aria-label="Back one move">◀</button>
+              <button id="nav-forward" type="button" title="Forward one move (→)" aria-label="Forward one move">▶</button>
+              <button id="nav-end" type="button" title="Last position (End)" aria-label="Last position">⏭</button>
+              <button id="flip" type="button" title="Flip board (F)">Flip</button>
+            </div>
+          </section>
+
+          <section class="panel annotate-panel" aria-labelledby="annotate-heading">
+            <h2 id="annotate-heading" class="panel-heading"></h2>
+            <div id="symbol-buttons" class="symbol-buttons" role="group" aria-label="Move symbol"></div>
+            <label for="comment-input" class="comment-label">Comment</label>
+            <textarea id="comment-input" rows="3"></textarea>
+            <div class="tool-buttons">
+              <button id="promote-move" type="button" title="Make this branch the main line">Make main line</button>
+              <button id="delete-move" type="button" title="Delete this move and every move after it">Delete from here</button>
+              <button id="copy-pgn" type="button">Copy chapter PGN</button>
+            </div>
+            <p id="annotate-message" class="panel-message" aria-live="polite"></p>
+          </section>
+        </div>
+      </div>
+      <p class="hint">
+        Move pieces for both sides, then pick a move in the list to give it a symbol (like ?? for a blunder) or a comment.<br />
+        Go back and play a different move to start a branch. Right-click a move to make it the main line or delete it.<br />
+        Click a move in an engine line to play the line up to that move. Everything is saved in this browser as you go. Use ← and → to step through moves.
+      </p>
+    </main>
+  </body>
+</html>

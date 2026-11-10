@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chess + Kickoff</title>
+    <script type="module" crossorigin src="./assets/chessKickoff-B2R5Wcfs.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/theme-DQ2Mpp4d.js">
+    <link rel="modulepreload" crossorigin href="./assets/game-CaDkfNOc.js">
+    <link rel="modulepreload" crossorigin href="./assets/board-D9v6p5gX.js">
+    <link rel="modulepreload" crossorigin href="./assets/clock-DeI-TrBw.js">
+    <link rel="modulepreload" crossorigin href="./assets/prompt-BEpEtU9b.js">
+    <link rel="modulepreload" crossorigin href="./assets/sounds-DctLc8dp.js">
+    <link rel="modulepreload" crossorigin href="./assets/kickoffField-1ecKk5TD.js">
+    <link rel="stylesheet" crossorigin href="./assets/theme-BSuA8G8H.css">
+  </head>
+  <body>
+    <main class="app duel-page">
+      <header class="page-header">
+        <a class="button-link" href="./">← Play chess</a>
+        <h1>Chess + Kickoff</h1>
+      </header>
+      <p class="variant-rules">
+        Each turn, make a chess move, then flick one of your pieces at the ball. Your clock stops when you flick
+        and the other player's starts once the ball stops. Every goal adds a minute to the scorer's clock.
+        Win by checkmate, by scoring 3 goals, or on time. A drawn board goes to whoever has more goals.
+      </p>
+      <div class="controls">
+        <label>
+          Time control
+          <select id="duel-time-control"></select>
+        </label>
+        <button id="duel-new-match" type="button">New match</button>
+      </div>
+      <div class="duel-clocks">
+        <div id="duel-clock-w" class="clock" aria-label="White's clock">
+          <span class="clock-name">White <span class="duel-goals" id="duel-goals-w">0</span></span>
+          <button type="button" data-resign="w" title="White: resign">⚑<span class="action-text"> Resign</span></button>
+          <span class="clock-time"></span>
+        </div>
+        <p id="duel-status" class="duel-status" aria-live="polite"></p>
+        <div id="duel-clock-b" class="clock" aria-label="Black's clock">
+          <span class="clock-name">Black <span class="duel-goals" id="duel-goals-b">0</span></span>
+          <button type="button" data-resign="b" title="Black: resign">⚑<span class="action-text"> Resign</span></button>
+          <span class="clock-time"></span>
+        </div>
+      </div>
+      <div id="duel-layout" class="duel-layout">
+        <section id="duel-board-area" class="duel-area" aria-label="Chess board">
+          <div id="board-container" class="board-container"></div>
+        </section>
+        <section id="duel-field-area" class="duel-area duel-field" aria-label="Kickoff field">
+          <canvas id="duel-canvas" aria-label="Soccer field: drag back from one of your pieces and let go to flick it"></canvas>
+        </section>
+      </div>
+      <p class="hint">
+        Chess: click a piece then a highlighted square, or drag it.<br />
+        Kickoff: press on one of your pieces, pull back away from where you want it to go, and let go. White shoots
+        right, Black shoots left. A kickoff can't score.
+      </p>
+    </main>
+  </body>
+</html>
