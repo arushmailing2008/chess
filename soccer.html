@@ -4,13 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chess Kickoff</title>
-    <script type="module" crossorigin src="./assets/soccer-C79MvBgp.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/theme-BRJIvXXf.js">
+    <script type="module" crossorigin src="./assets/soccer-BJAZn2Rw.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/theme-BAnk-Egm.js">
+    <link rel="modulepreload" crossorigin href="./assets/game-CaDkfNOc.js">
+    <link rel="modulepreload" crossorigin href="./assets/clock-DeI-TrBw.js">
     <link rel="modulepreload" crossorigin href="./assets/prompt-BEpEtU9b.js">
     <link rel="modulepreload" crossorigin href="./assets/sounds-DctLc8dp.js">
     <link rel="modulepreload" crossorigin href="./assets/poolSounds-CBe2a6TY.js">
-    <link rel="modulepreload" crossorigin href="./assets/kickoffField-BG1t3aOe.js">
-    <link rel="stylesheet" crossorigin href="./assets/theme-CPD9bvJp.css">
+    <link rel="modulepreload" crossorigin href="./assets/kickoffField-vNPe4CJA.js">
+    <link rel="stylesheet" crossorigin href="./assets/theme-DZrNzbn6.css">
   </head>
   <body>
     <main class="app soccer-page">
@@ -22,20 +24,53 @@
         Two players, one device. Take turns flicking one of your pieces at the ball. White shoots right, Black
         shoots left. First to 3 goals wins.
       </p>
-      <div class="archery-hud soccer-hud">
-        <span>White <strong id="soccer-score-w">0</strong></span>
-        <span id="soccer-status" class="soccer-status" aria-live="polite"></span>
-        <span>Black <strong id="soccer-score-b">0</strong></span>
-        <button id="soccer-new-match" type="button">New match</button>
+      <div class="soccer-settings">
+        <label>
+          Clock
+          <select id="soccer-time-control"></select>
+        </label>
+        <span class="soccer-move-note">Each move: 10 seconds, or the turn passes</span>
       </div>
-      <div id="soccer-field" class="soccer-field">
-        <canvas id="soccer-canvas" aria-label="Soccer field: drag back from one of your pieces and let go to flick it"></canvas>
+      <div id="soccer-custom-time" class="options-panel" hidden>
+        <div class="custom-time-fields">
+          <label>
+            Minutes each
+            <input id="soccer-custom-minutes" type="number" min="0.5" max="180" step="0.5" value="5" inputmode="decimal" />
+          </label>
+          <label>
+            Increment (seconds)
+            <input id="soccer-custom-increment" type="number" min="0" max="60" step="1" value="3" inputmode="numeric" />
+          </label>
+          <button id="soccer-custom-start" type="button">Start match</button>
+        </div>
+        <p id="soccer-custom-message" class="panel-message error" aria-live="polite"></p>
+      </div>
+      <div id="soccer-stage" class="soccer-stage">
+        <div class="archery-hud soccer-hud">
+          <span id="soccer-side-w" class="soccer-side"
+            >White <strong id="soccer-score-w">0</strong> <span id="soccer-clock-w" class="soccer-clock"></span
+          ></span>
+          <span id="soccer-status" class="soccer-status" aria-live="polite"></span>
+          <span id="soccer-side-b" class="soccer-side"
+            >Black <strong id="soccer-score-b">0</strong> <span id="soccer-clock-b" class="soccer-clock"></span
+          ></span>
+          <button id="soccer-new-match" type="button">New match</button>
+          <button id="soccer-fullscreen" type="button" aria-pressed="false">Full screen</button>
+        </div>
+        <div id="soccer-field" class="soccer-field">
+          <canvas id="soccer-canvas" aria-label="Soccer field: drag back from one of your pieces and let go to flick it"></canvas>
+          <button id="soccer-play" class="soccer-play" type="button">▶ Play full screen</button>
+        </div>
+        <p class="soccer-rotate-hint">Turn your phone sideways for a bigger field.</p>
       </div>
       <p class="hint">
         Press on one of your pieces, pull back away from where you want it to go, and let go. The farther you
-        pull, the harder the flick. The queen hits hardest; the king is the weakest.<br />
+        pull, the harder the flick. The dotted line shows where your piece will go (even off a wall) and which way the
+        piece or ball it hits will fly. The queen hits hardest; the king is the weakest.<br />
         A kickoff can't score: the goals stay shut until the first shot after a kickoff. Your turn ends when
-        everything stops moving.
+        everything stops moving.<br />
+        You have 10 seconds for each move (the countdown is at the top of the field), or the turn passes. With a clock,
+        your time only runs while it's your turn to aim; each flick adds the increment, and running out loses.
       </p>
     </main>
   </body>
