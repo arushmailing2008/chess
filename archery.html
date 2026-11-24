@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pawn Storm Archery</title>
-    <script type="module" crossorigin src="./assets/archery-Wmh4c7GE.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/theme-DQ2Mpp4d.js">
+    <script type="module" crossorigin src="./assets/archery-CZDcZy7H.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/theme-BRJIvXXf.js">
     <link rel="modulepreload" crossorigin href="./assets/prompt-BEpEtU9b.js">
-    <link rel="stylesheet" crossorigin href="./assets/theme-BSuA8G8H.css">
+    <link rel="stylesheet" crossorigin href="./assets/theme-CPD9bvJp.css">
   </head>
   <body>
     <main class="app archery-page">
@@ -20,20 +20,39 @@
         (the ring turns gold) flies through every piece in its path. Don't let anything reach rank 1!
       </p>
       <div class="archery-hud" aria-live="polite">
+        <span>Level <strong id="archery-level">1</strong></span>
         <span>Score <strong id="archery-score">0</strong></span>
         <span>Best <strong id="archery-best">0</strong></span>
         <span>Lives <strong id="archery-lives" class="archery-lives"></strong></span>
+        <span>Streak <strong id="archery-streak">0</strong> <em id="archery-multiplier" class="archery-multiplier"></em></span>
+        <span>Coins <strong id="archery-coins" class="archery-coins">0</strong></span>
         <button id="archery-pause" type="button">Pause</button>
+        <button id="archery-how-to" type="button">Show tutorial</button>
       </div>
-      <div id="archery-board" class="board-container archery-board">
-        <canvas id="archery-canvas" aria-label="Archery board: aim with the pointer, hold to draw, release to shoot"></canvas>
+      <div id="archery-tutorial" class="archery-tutorial" role="status" hidden>
+        <span id="archery-tutorial-step" class="archery-tutorial-step"></span>
+        <p id="archery-tutorial-text"></p>
+        <button id="archery-tutorial-skip" type="button">Skip tutorial</button>
+      </div>
+      <div class="archery-play">
+        <div id="archery-board" class="board-container archery-board">
+          <canvas id="archery-canvas" aria-label="Archery board: aim with the pointer, hold to draw, release to shoot"></canvas>
+        </div>
+        <section class="archery-shop" aria-label="Shop">
+          <h2>Shop</h2>
+          <div id="archery-shop-items" class="archery-shop-items"></div>
+        </section>
       </div>
       <p class="hint">
-        Mouse or finger: aim, hold, release. Keyboard: aim with the mouse, hold Space to draw. P pauses.<br />
+        Mouse or finger: aim, hold, release. Keyboard: aim with the mouse, hold Space to draw, 1–4 to buy. P pauses.<br />
+        Hits in a row build a streak: ×2 points from 5, ×3 from 10, ×4 from 20. A miss or a breach resets it.<br />
         After each shot the bow reloads (the white bar under the rook); a draw only starts charging once it's ready.<br />
         Pawns step straight down; knights (from 12 points) jump in L-shapes. Pawns are worth 1, knights 3, and
-        each extra piece one arrow pierces is worth more.
+        each extra piece one arrow pierces is worth more.<br />
+        Every 10 points is a new level, and the storm gets faster. From level 4 the board shakes, from level 5 the
+        squares change color, from level 6 wind pushes your arrows sideways (a full draw drifts less), from level 7
+        the board flashes, and from level 8 the lights go out now and then, except around your rook and arrows.
       </p>
-    </main>
+    </main>
   </body>
 </html>

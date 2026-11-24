@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Billiards</title>
+    <script type="module" crossorigin src="./assets/billiards-D0U6vG3U.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/theme-BRJIvXXf.js">
+    <link rel="modulepreload" crossorigin href="./assets/prompt-BEpEtU9b.js">
+    <link rel="modulepreload" crossorigin href="./assets/sounds-DctLc8dp.js">
+    <link rel="stylesheet" crossorigin href="./assets/theme-CPD9bvJp.css">
+  </head>
+  <body>
+    <main class="app billiards-page">
+      <header class="page-header">
+        <a class="button-link" href="./">← Play chess</a>
+        <h1>Billiards</h1>
+        <label>
+          Game
+          <select id="billiards-mode">
+            <option value="eight">8-ball</option>
+            <option value="chess">Chess Pool</option>
+          </select>
+        </label>
+        <label data-mode="chess" hidden>
+          Opponent
+          <select id="billiards-opponent">
+            <option value="computer">Computer (plays Black)</option>
+            <option value="two">2 players, one device</option>
+          </select>
+        </label>
+      </header>
+      <p class="variant-rules" data-mode="eight">
+        8-ball for two players on one device. Sink your group (solids or stripes, whichever you sink first), then
+        the 8. Sink the 8 early and you lose.
+      </p>
+      <p class="variant-rules" data-mode="chess" hidden>
+        Chess Pool against the computer or a friend on the same device. Shoot one of your own pieces to knock the
+        other side's pieces into the pockets. Sink the enemy King to win, but sink your own King and you lose.
+      </p>
+      <div class="archery-hud billiards-hud">
+        <span id="billiards-player-0" class="billiards-player"
+          ><strong id="billiards-name-0">Player 1</strong> <em id="billiards-group-0"></em
+        ></span>
+        <span id="billiards-status" class="billiards-status" aria-live="polite"></span>
+        <span id="billiards-player-1" class="billiards-player"
+          ><strong id="billiards-name-1">Player 2</strong> <em id="billiards-group-1"></em
+        ></span>
+        <button id="billiards-sound" type="button" aria-pressed="true">Sound on</button>
+        <button id="billiards-new-game" type="button">New game</button>
+      </div>
+      <div id="billiards-table" class="billiards-table">
+        <canvas id="billiards-canvas" aria-label="Pool table: press behind the ball or on your piece, pull back and let go to shoot"></canvas>
+      </div>
+      <p class="hint" data-mode="eight">
+        Press behind the white ball and pull back, away from where you want it to go, then let go. The farther you
+        pull, the harder the shot. The dotted line shows where the white ball will hit, the yellow line where the
+        ball it hits will go, and the faint line where the white goes after.<br />
+        Sink one of yours and you shoot again. A foul (sinking the white, hitting nothing, or hitting the wrong
+        group first) gives the other player ball in hand: they tap anywhere to place the white ball.
+      </p>
+      <p class="hint" data-mode="chess" hidden>
+        Press on one of your glowing pieces, pull back away from where you want it to go, and let go. The yellow line
+        shows where the piece you'll hit goes.<br />
+        Pieces handle differently: pawns are light and scatter, knights spin when hit off-center and curve, rooks are
+        heavy bulldozers, the queen is heavy and lively, and the King is the heaviest. Sink an enemy piece (and none of
+        your own) to shoot again.
+      </p>
+    </main>
+  </body>
+</html>
