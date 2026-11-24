@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Billiards</title>
-    <script type="module" crossorigin src="./assets/billiards-D0U6vG3U.js"></script>
+    <script type="module" crossorigin src="./assets/billiards-BcvpUETr.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/theme-BRJIvXXf.js">
     <link rel="modulepreload" crossorigin href="./assets/prompt-BEpEtU9b.js">
     <link rel="modulepreload" crossorigin href="./assets/sounds-DctLc8dp.js">
@@ -35,8 +35,9 @@
         the 8. Sink the 8 early and you lose.
       </p>
       <p class="variant-rules" data-mode="chess" hidden>
-        Chess Pool against the computer or a friend on the same device. Shoot one of your own pieces to knock the
-        other side's pieces into the pockets. Sink the enemy King to win, but sink your own King and you lose.
+        Chess Pool against the computer or a friend on the same device. Shoot the white ball to knock the other
+        side's pieces into the pockets. Their King is locked until you've sunk 5 of their other pieces: sink it after
+        that to win, but sink it early (or sink your own King) and you lose.
       </p>
       <div class="archery-hud billiards-hud">
         <span id="billiards-player-0" class="billiards-player"
@@ -50,7 +51,7 @@
         <button id="billiards-new-game" type="button">New game</button>
       </div>
       <div id="billiards-table" class="billiards-table">
-        <canvas id="billiards-canvas" aria-label="Pool table: press behind the ball or on your piece, pull back and let go to shoot"></canvas>
+        <canvas id="billiards-canvas" aria-label="Pool table: press behind the white ball, pull back and let go to shoot"></canvas>
       </div>
       <p class="hint" data-mode="eight">
         Press behind the white ball and pull back, away from where you want it to go, then let go. The farther you
@@ -60,11 +61,13 @@
         group first) gives the other player ball in hand: they tap anywhere to place the white ball.
       </p>
       <p class="hint" data-mode="chess" hidden>
-        Press on one of your glowing pieces, pull back away from where you want it to go, and let go. The yellow line
-        shows where the piece you'll hit goes.<br />
+        Press behind the white ball, pull back away from where you want it to go, and let go. The yellow line shows
+        where the piece you'll hit goes.<br />
+        Sink an enemy piece (and none of your own) to shoot again. If the white ball goes in, the other player has
+        ball in hand: they tap anywhere to place it. Check: if the white ball stops within one square of your King,
+        your King glows red and you may drag it anywhere open on your half before you shoot.<br />
         Pieces handle differently: pawns are light and scatter, knights spin when hit off-center and curve, rooks are
-        heavy bulldozers, the queen is heavy and lively, and the King is the heaviest. Sink an enemy piece (and none of
-        your own) to shoot again.
+        heavy, the queen is lively, and the King is the heaviest.
       </p>
     </main>
   </body>
